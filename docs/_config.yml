@@ -1,9 +1,7 @@
 ### Site Settings ###
 title               : Sina Mohammadi's Portfolio
 description         : >-
-                      I turn coffee :coffee: into code,
-                      use tabs over spaces
-                      and never broke production.
+                      I study Ph.D. of Computational and Data Sciences at Chapman University.
 domain: sinamohammadicu.github.io
 url: https://sinamohammadicu.github.io
 baseurl             : ""                     # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
@@ -28,23 +26,23 @@ nav_exclude:                                            # The following paths ar
 ### Author Info ###
 author:
   name              : Sina Mohammadi
-  image             :
-  behance           : your_username
+  image             : https://media-exp1.licdn.com/dms/image/D5603AQE3fSDN-GKvCw/profile-displayphoto-shrink_800_800/0/1630649683290?e=1653523200&v=beta&t=ky4yEnJBcjhuO0Kp4vUyAYLCoTeTNwkhKhmWa6E_RhQ
+  #behance           :
 # dribbble          : your_username
   email             : simohammadi [at] Chapman . edu
-  facebook          : your_username
+  #facebook          :
   github            : sinamohammadicu
 # gitlab            : your_username
 # instagram         : your_username
 # kaggle            : your_username
-  linkedin          : your_username
-  medium            : your_username
+  linkedin          : sina-mohammadi-at-chapman
+  #medium            :
 # soundcloud        : your_username
 # spotify           : your_username
 # stackoverflow     : your_user_id
 # tumblr            : your_username.tumblr.com
 # twitch            : your_username
-  twitter           : your_username
+  #twitter           :
 # vimeo             : your_username
 # youtube           : your_channel_name
 # keybase           : your_username
