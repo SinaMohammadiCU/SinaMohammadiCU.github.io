@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Docs
+title: Math
 permalink: /docs/
 weight: 5
 ---
 
-# About portfolYOU <small class="text-muted">{{ site.github.latest_release.tag_name }}</small>
+### Mathematics Notes will go here <small class="text-muted">{{ site.github.latest_release.tag_name }}</small>
 {:.no_toc}
 
 {%- assign partials_dir = "partials" -%}
@@ -16,5 +16,3 @@ weight: 5
 {% assign relative_path = doc.path | remove: parent_dir %}
 {% include_relative {{ relative_path }} %}
 {% endfor %}
-
-{% include elements/github-edit-footer.html %}
