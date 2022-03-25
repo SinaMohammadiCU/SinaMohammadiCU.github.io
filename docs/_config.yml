@@ -89,12 +89,12 @@ defaults:
       path: ""
       type: "posts"
     values:
-      comments: false                                   # Set to true to enable disqus comments
+      comments: true                                   # Set to true to enable disqus comments
 
 
 ### Exclude from processing ###
 exclude:
   - README.md
-  - CONTRIBUTING.md
-  - LICENSE
+#  - CONTRIBUTING.md
+#  - LICENSE
   - "*.log"
