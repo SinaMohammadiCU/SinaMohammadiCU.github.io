@@ -218,28 +218,6 @@ decode_sudoku(ip_solution)
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p class="text-center">
-{% include elements/button.html link="https://github.com" text="Learn More" %}
-</p>
-
 #### Sudoku
 
 
