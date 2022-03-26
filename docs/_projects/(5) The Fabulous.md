@@ -1,11 +1,15 @@
 ---
 name: Sudoku Solution with Integer Programming
-tools: [tool1, XML, WPF]
-image: ../photos/1.jpg
-description: This project has an individual showcase page, not just a direct link to the project site or repo. Now you have more space to describe your awesome project!
+tools: [Python, ORtools, LP, IP]
+image: ../photos/Sudoku/sudoku.jpeg
+description: In this project I have solved Sudoku with Linear Programming using ORtools in Python. I go over LP and IP, Optimization frameworks and solvers such as ORtools, Pyomo, PuLP, SciPy and more. <br/> P.S:The picture is my Sudoku book that I solve in my free time, of course not with Ortools.
 #external_url: https://github.com/sinamohammadicu
 ---
 I have always been curious about puzzles that could be mathematically modelled and solved via numerical methods/algorithms. In this project I am trying to solve a Sudoku problem with Integer Programming.<br/><br/>
+##### **Linear Programming ?** <br/>
+In Optimization problems we normally form our objective function that we want to either maximize or minimize. Also we have a set of constraints that are rules/limits for the optimization task. In any optimization process we should fully understand the real world problem to be able to convert it to mathematical terms. If we can model the optimization problem mathematically in a way that all the variables are continuous and all the functions are linear we can use Linear Programming (LP).
+
+
 ##### **Integer Programming ?** <br/>
 **Integer programming** is the class of problems that can be expressed as the optimization of a linear function subject to a set of linear constraints over integer variables. In Linear Programming the output can be decimal or fraction(which is sometimes good and sometimes bad), however we use Integer Programming when all variables are integers. Theoretically Integer Programming is much more difficult that Linear Programming. Integer Programming problem is in fact NP-hard. More important, probably, is the fact that the Integer Programs that can be solved to provable optimality in reasonable time are much smaller in size than their Linear Programming counterparts. A typical example of integer programs is the knapsack problem
 There are other types of Integer Programming such as **MIP (stands for Mixed Integer Programming)**, in which some of the variables can be relaxed to be fractions, which doesn't make it necessarily easier but makes it more interesting in my opinion. Also there is **BIP (Binary Integer Programming)** , which all of the variables are binary either 0 or 1.
@@ -15,10 +19,87 @@ To wrap up the introduction to IP and its difference with LP let's look into thi
 As we can see, a good thing about IP is that we have a finite solution space, eg red dots in example above. Since our choice variables can only take on the integer values, we only need to consider those individual values. We can actually iterate over all possible combinations in our solution space. <br/><br/>
 
 ##### **Which FrameWork to Use**
-There are multiple ways to approach LP and IP code-wise. Here is a list framework that can be used to solve IP and LP problems; **Pyomo**, **Ortools**, **PuLP**, **SCIP** and **SciPy**.
-In my Project I have used **Ortool** because it is easy to start with and implement.
-Write a bit more about each of them .
+There are multiple ways to approach LP and IP code-wise. Here is a list framework that can be used to solve IP and LP problems; **Pyomo**, **Ortools**, **PuLP**, **SCIP** and **SciPy**.<br>
+In my Project I have used **Ortool** because it is easy to start with and implement.<br>
+Write a bit more about each of them .<br>
+**OrTools**: Developed by google and is recommended for LP and IP. It can be installed with "pip install -U ortools". below is a simple example solved with **Ortools** framework and **GLOP** as solver.<br>
+```python
+from ortools.linear_solver import pywraplp
 
+#Setting up the solver
+solver=pywraplp.Solver.CreateSolver('GLOP')
+x=solver.NumVar(0,10,'x')
+y=solver.NumVar(0,10,'y')
+
+#Constraints
+solver.Add(-x+y<=1)
+solver.Add(2*x+3*y<=12)
+solver.Add(3*x+2*y<=12)
+
+#Objective Function
+solver.Maximize(x+y)
+
+#Result and Output
+results=solver.Solve()
+if results==pywraplp.Solver.OPTIMAL: print('Optimal Solution Found')
+print('x:',x.solution_value())
+print('y:',y.solution_value())
+```
+<br>
+**SCIP**: It can solve LP, IP and non-linear problems. Also it can be used for mixed integer programming (MIP) and mixed integer nonlinear programming (MINLP). It can be downloaded from "https://www.scipopt.org/". <br>
+```python
+from pyscipopt import Model
+model=Model('non-linear')
+
+x=model.addVar('x')
+y=model.addVar('y')
+
+#Objective Function
+model.setObjective(x+y, sense='maximize')
+
+#Non-linear constraints
+model.addCons(-x+y<=1)
+model.addCons(2*x+3*x*y<=12)
+model.addCons(2*x+3*y<=12)
+
+model.optimize()
+result_=model.getBestSol()
+
+print('x:',result_[x])
+print('y:',result_[y])
+```
+<br>
+**Gurobi**: Gurobi is commercial but it can be downloaded activated with an academic email. Below is a sample code for the same problem solved with **gurobipy**.<br>
+
+```
+from gurobipy import *
+model=Model('example')
+
+#Setting up the variables
+x=model.addVar(obj=1, vtype='C', name='x')
+y=model.addVar(obj=1, vtype='C, name='y')
+
+model.update()
+
+#Constraints
+model.addConstr(-x+y<=1)
+model.addConstr(2*x+3*x*y<=12)
+model.addConstr(2*x+3*y<=12)
+
+model.ModelSense=-1
+
+#Result and output               
+model.optimize()
+print('x:',x.X)
+print('y:'y.X)
+
+```
+
+<br>
+
+**CPLEX**: Is also a commercial package developed by IBM, however can be downloaded with an academic email for free from "https://www.ibm.com/products/ilog-cplex-optimization-studio". CPLEX can be used in Pyomo framework.
+**GLPK**: It can be downloaded from "https://sourceforge.net/projects/winglpk/" used in Pyomo framework.
+**Pyomo**: Is a framework that we can use different solvers within it an other solvers if installed. Pyomo can be installed with "pip install pyomo"
 ##### **Solving Sudoku with Integer Programming**
 In my Solution The key idea is to transform a puzzle from a square 9-by-9 grid to a cubic 9-by-9-by-9 array of binary values (0 or 1). Think of the cubic array as being 9 square grids stacked on top of each other, where each layer corresponds to an integer from 1 through 9. The top grid, a square layer of the array, has a 1 wherever the solution or clue has a 1. The second layer has a 1 wherever the solution or clue has a 2. The ninth layer has a 1 wherever the solution or clue has a 9. There is no objective function because once the contraints are met the problem is solved. Contraints are set based on the rules of sudoku. <br><br>
 **Constraint 1**: Each cell should be filled with a single value between 1 and 9 <br>
