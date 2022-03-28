@@ -157,7 +157,7 @@ print('x=',x_value)
 print('y=',y_value)
 ```
 <br><br>
-In a nutshell, all frameworks, Pyomo, Ortools, PuLP, SCIP and Scipy with solvers of GLPK, CBC, Cplex, Gurobi, and SCIP can be used for **Linear Problems**. For **NonLinear problems** Pyomo, SCIP and SciPy are the choices.  In my opinion, out of all the frameworks Pyomo and Ortools are the easiest ones to start with and configure a new solver.
+In a nutshell, all frameworks, Pyomo, Ortools, PuLP, SCIP and Scipy with solvers of GLPK, CBC, Cplex, Gurobi, and SCIP can be used for **Linear Problems**. For **NonLinear problems** Pyomo, SCIP and SciPy are the choices.  In my opinion, out of all the frameworks Pyomo and Ortools are the easiest ones to start with and configure a new solver if needed.
 
 ##### **Solving Sudoku with Integer Programming**
 In my Solution The key idea is to transform a puzzle from a square 9-by-9 grid to a cubic 9-by-9-by-9 array of binary values (0 or 1). Think of the cubic array as being 9 square grids stacked on top of each other, where each layer corresponds to an integer from 1 through 9. The top grid, a square layer of the array, has a 1 wherever the solution or clue has a 1. The second layer has a 1 wherever the solution or clue has a 2. The ninth layer has a 1 wherever the solution or clue has a 9. There is no objective function because once the contraints are met the problem is solved. Contraints are set based on the rules of sudoku. <br><br>
