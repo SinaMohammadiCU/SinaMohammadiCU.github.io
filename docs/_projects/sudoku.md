@@ -5,7 +5,7 @@ image: ../photos/Sudoku/sudoku.jpeg
 description: In this project I have solved Sudoku with Linear Programming using ORtools in Python. I go over LP and IP, Optimization frameworks and solvers such as ORtools, Pyomo, PuLP, SciPy and more. <br/> P.S:The picture is my Sudoku book that I solve in my free time, of course not with Ortools.
 #external_url: https://github.com/sinamohammadicu
 ---
-I have always been curious about optimization problems and puzzles that could be mathematically modelled and solved via numerical methods/algorithms. In this project I am trying to solve a Sudoku problem with Integer Programming. Also, below is a quick introduction to Linear Programming (LP), Integer Programming (IP) and some of useful optimization frameworks and solvers. <br/><br/>
+have always been curious about optimization problems and puzzles that could be mathematically modelled and solved via numerical methods/algorithms. In this project I am trying to solve a Sudoku problem with Integer Programming. Also, below is a quick introduction to Linear Programming (LP), Integer Programming (IP) and some of useful optimization frameworks and solvers. <br/><br/>
 ##### **Linear Programming ?** <br/>
 In Optimization problems we normally formulate an objective function that we want to either maximize or minimize. In addition, we have a set of constraints that are rules/limits for the optimization task. In any optimization process we should fully understand the real world problem to be able to convert it to mathematical terms. If we can model the optimization problem mathematically in a way that all the variables are continuous and all the functions are linear we can use Linear Programming (LP).
 
